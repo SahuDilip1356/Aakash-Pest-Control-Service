@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Booking {
+  id           String        @id @default(cuid())
+  name         String
+  mobile       String
+  location     String
+  pestType     String
+  propertyType String
+  scheduledAt  DateTime
+  status       BookingStatus @default(PENDING)
+  calendarEventId String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  mobile    String
+  name      String?
+  source    String   // "hero-form" | "ai-chat" | "pest-selector" | "whatsapp"
+  pestType  String?
+  createdAt DateTime @default(now())
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
