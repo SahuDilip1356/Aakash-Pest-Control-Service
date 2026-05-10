@@ -10,7 +10,7 @@ export default function Header() {
         </a>
         <nav className="hidden md:flex gap-8 text-sm font-medium text-white/70">
           <a href="/services" className="hover:text-green-400 transition-colors">Services</a>
-          <a href="#book" className="hover:text-green-400 transition-colors">Book</a>
+          <a href="/booking" className="hover:text-green-400 transition-colors">Book</a>
           <a href="/about" className="hover:text-green-400 transition-colors">About</a>
           <a href="/contact" className="hover:text-green-400 transition-colors">Contact</a>
         </nav>
