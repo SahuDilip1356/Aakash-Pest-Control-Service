@@ -27,3 +27,14 @@ also reduce friction: instant quote removes "fill form and wait" which kills con
 Business owner dashboard (bookings view, lead management, calendar) placeholder only in v1.
 **Why:** First 3 clients can be managed via WhatsApp + Google Calendar manually. Validate
 that clients will pay before building the management layer.
+
+## 2026-05-10 — Netlify over Vercel for hosting
+Each client deploys to its own Netlify site, sharing the same GitHub repo, differentiated
+by `SITE_CLIENT` env var. `netlify.toml` at repo root sets `base = pest-control-platform/apps/web`.
+**Why:** Founder's call — site is static-heavy with light API routes, Netlify is preferred.
+**Caveat:** This is a hybrid Next.js app, not a fully static site. Pages render statically;
+`/api/*` routes deploy as Netlify Functions. Netlify's Next.js runtime handles this auto.
+**Alternative considered:** Vercel — purpose-built for Next.js, lower friction, faster cold
+starts on functions. May revisit if Netlify Next.js runtime lags behind Next.js major versions
+or if function cold starts become a UX problem.
+**How to apply:** New client = new Netlify site, same repo, `SITE_CLIENT=<client-slug>` env var.
