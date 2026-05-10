@@ -5,7 +5,14 @@ import CallFloat from "@/components/common/CallFloat";
 import AIChatWidget from "@/components/ai/AIChatWidget";
 import "@/styles/globals.css";
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.URL ??
+  process.env.DEPLOY_PRIME_URL ??
+  "https://aakash-pest-control-services.netlify.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: siteConfig.name,
   description: siteConfig.tagline,
   icons: {
